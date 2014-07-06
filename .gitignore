@@ -19,3 +19,14 @@
 *.exe
 *.out
 *.app
+/ipch
+/Homework.opensdf
+/Homework.sdf
+/Release
+/Debug
+
+#Solution support files
+*.sdf
+*.opensdf
+*.suo
+/Homework/Debug
