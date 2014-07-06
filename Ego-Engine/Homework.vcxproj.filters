@@ -48,6 +48,9 @@
     <ClInclude Include="Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -71,13 +74,16 @@
     <ClCompile Include="Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\cubes.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Temp.bmp">
       <Filter>Data</Filter>
+    </Image>
+    <Image Include="..\SupportFiles\cubes.ico">
+      <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -87,5 +93,6 @@
     <None Include="level1.csv">
       <Filter>Data</Filter>
     </None>
+    <None Include="..\SupportFiles\glew32.dll" />
   </ItemGroup>
 </Project>

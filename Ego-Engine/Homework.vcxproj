@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Renderer.h" />
@@ -105,6 +106,7 @@
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -116,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\SupportFiles\cubes.ico" />
-    <Image Include="..\SupportFiles\Temp.bmp" />
     <Image Include="Temp.bmp" />
   </ItemGroup>
   <ItemGroup>

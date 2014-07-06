@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Renderer.h"
+#include "Input.h"
 
 GLfloat * VertexList;
 GLushort * Indices;
@@ -75,6 +76,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_DESTROY:
 		return 0;
+	case WM_KEYUP:
+	{
+		//Record what keys were down.
+		Input::RegisterKeyDown(message);
+
+		return 0;
+	}
+
 	case WM_KEYDOWN:
 		switch (wParam)
 		{
