@@ -20,8 +20,6 @@
 *.out
 *.app
 /ipch
-/Homework.opensdf
-/Homework.sdf
 /Release
 /Debug
 
@@ -29,5 +27,5 @@
 *.sdf
 *.opensdf
 *.suo
-/Homework/Debug
 /Ego-Engine/Debug
+/Ego-Engine/Release
