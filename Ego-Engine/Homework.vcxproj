@@ -14,6 +14,7 @@
     <ProjectGuid>{6B5C3E0A-6C78-4039-9262-87E40F967A7F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Homework</RootNamespace>
+    <ProjectName>Ego-Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -96,8 +97,8 @@
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Homework.cpp" />
-    <ClCompile Include="level.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -109,6 +110,14 @@
     <Image Include="..\cubes.ico">
       <DeploymentContent>true</DeploymentContent>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="floor.csv">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="level1.csv">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
