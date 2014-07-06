@@ -26,10 +26,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	//Bitmap * bmp = new Bitmap("C:\\Users\\Edwin\\Documents\\Visual Studio 2013\\Projects\\Homework\\Debug\\Temp.bmp");
 
-	Level * levelOne = new Level("C:\\Users\\Edwin\\Documents\\Visual Studio 2013\\Projects\\Homework\\Debug\\level1.csv");
-	Level * floor = new Level("C:\\Users\\Edwin\\Documents\\Visual Studio 2013\\Projects\\Homework\\Debug\\floor.csv");
-
-
+	Level * levelOne = new Level("level1.csv");
+	Level * floor = new Level("floor.csv");
 
 	MainRenderer = new Renderer();
 

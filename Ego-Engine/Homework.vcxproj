@@ -14,6 +14,7 @@
     <ProjectGuid>{6B5C3E0A-6C78-4039-9262-87E40F967A7F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Homework</RootNamespace>
+    <ProjectName>Ego-Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -104,8 +105,8 @@
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Homework.cpp" />
-    <ClCompile Include="level.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -116,10 +117,19 @@
   <ItemGroup>
     <Image Include="..\SupportFiles\cubes.ico" />
     <Image Include="..\SupportFiles\Temp.bmp" />
+    <Image Include="Temp.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SupportFiles\glew32.dll">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="floor.csv">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="level1.csv">
+      <DeploymentContent>true</DeploymentContent>
     </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
