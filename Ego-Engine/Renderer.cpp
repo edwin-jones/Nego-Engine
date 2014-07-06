@@ -78,13 +78,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_KEYUP:
 	{
-		//Record what keys were down.
-		Input::RegisterKeyDown(message);
+		//Record what key was released.
+        Input::SetKeyState(wParam, false);
 
 		return 0;
 	}
 
 	case WM_KEYDOWN:
+	{
+		//record what key was pressed
+		Input::SetKeyState(wParam, true);
+
 		switch (wParam)
 		{
 		case VK_ESCAPE:
@@ -92,6 +96,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			return 0;
 		}
 		return 0;
+	}
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
@@ -221,12 +226,14 @@ void Renderer::Render()
 		ModelsToDraw[x]->PopulateGraphicsArray(VertexList, &vertexArraystep, Indices, &indexArraystep, Colors, &colourArraystep, TexturePositions, &texturePositionArrayStep);
 	}
 
+
 	//
 	glVertexPointer(3, GL_FLOAT, 0, VertexList);
 	glColorPointer(3, GL_FLOAT, 0, Colors);
 	glTexCoordPointer(2, GL_FLOAT, 0, TexturePositions);
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	if (!Input::IsKeyDown(VK_SPACE))glClear(GL_COLOR_BUFFER_BIT);
 
 	//draw 18 verts / 6 triangle(s) per tim0
 	glDrawElements(GL_TRIANGLES, ModelsToDraw.size() * 36, GL_UNSIGNED_SHORT, Indices);

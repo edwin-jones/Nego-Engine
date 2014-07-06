@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Input.h"
 
-
+//define KeyboardState array.
+BOOLEAN Input::KeyBoardState[256] = { 0 };
 
 Input::Input()
 {
@@ -15,16 +16,14 @@ Input::~Input()
 
 void Input::Init()
 {
-	//Clean our the keyboard stat array and fill it with zeros.
-	ZeroMemory(&Input::KeyBoardState, sizeof(Input::KeyBoardState));
 }
 
-void Input::RegisterKeyDown(Key key)
+void Input::SetKeyState(Key key, BOOLEAN keyPressed)
 {
-	Input::KeyBoardState[key] = 1;
+	Input::KeyBoardState[key] = keyPressed;
 }
 
-void Input::RegisterKeyUp(Key key)
+BOOLEAN Input::IsKeyDown(Key key)
 {
-	Input::KeyBoardState[key] = 0;
+	return Input::KeyBoardState[key];
 }
