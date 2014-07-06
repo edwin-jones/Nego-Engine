@@ -110,6 +110,7 @@
     <Image Include="..\cubes.ico">
       <DeploymentContent>true</DeploymentContent>
     </Image>
+    <Image Include="Temp.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="floor.csv">

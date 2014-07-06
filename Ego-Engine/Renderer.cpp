@@ -133,7 +133,7 @@ void Renderer::Init(HINSTANCE hInstance, int width, int height)
 
 	//load texture
 
-	Bitmap * bmp = new Bitmap("C:\\Users\\Edwin\\Documents\\Visual Studio 2013\\Projects\\Homework\\Debug\\Temp.bmp");
+	Bitmap * bmp = new Bitmap("Temp.bmp");
 
 	glGenTextures(1, &currentTexture);
 	glBindTexture(GL_TEXTURE_2D, currentTexture);
