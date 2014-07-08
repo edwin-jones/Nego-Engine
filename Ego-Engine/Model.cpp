@@ -1,10 +1,15 @@
 #include "stdafx.h"
 #include "Model.h"
+#include "Bitmap.h";
 
 
 //CTOR
 Model::Model(Vector3F position)
 {
+	mTexture = new Bitmap("Temp.bmp");
+
+	currentTextureIdentifier = 0;
+
 	mPosition = position;
 
 	mVerts = 24;
@@ -105,35 +110,35 @@ Model::Model(Vector3F position)
 	//map a color to each vertex. We can't recolor if we use a vertex twice so it must be part of the same face of the cube.
 	mColours = new GLfloat[72]
 	{
-			1.0f, 0.0f, 0.0f,
-			1.0f, 0.0f, 0.0f,
-			1.0f, 0.0f, 0.0f,
-			1.0f, 0.0f, 0.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
 
-			0.0f, 0.0f, 1.0f,
-			0.0f, 0.0f, 1.0f,
-			0.0f, 0.0f, 1.0f,
-			0.0f, 0.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
 
 			1.0f, 0.5f, 0.0f,
 			1.0f, 0.5f, 0.0f,
 			1.0f, 0.5f, 0.0f,
 			1.0f, 0.5f, 0.0f,
 
-			1.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 1.0f,
-			1.0f, 0.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
 
-			0.2f, 0.5f, 0.0f,
-			0.2f, 0.5f, 0.0f,
-			0.2f, 0.5f, 0.0f,
-			0.2f, 0.5f, 0.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
 
-			1.0f, 0.5f, 1.0f,
-			1.0f, 0.5f, 1.0f,
-			1.0f, 0.5f, 1.0f,
-			1.0f, 0.5f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
 
 	};
 }
@@ -144,6 +149,8 @@ Model::~Model()
 	delete[] mVertexList;
 	delete[] mIndices;
 	delete[] mColours;
+
+	delete mTexture;
 }
 
 void Model::PopulateGraphicsArray(GLfloat* vertArray, int* arrayPosition, 
@@ -168,4 +175,9 @@ void Model::PopulateGraphicsArray(GLfloat* vertArray, int* arrayPosition,
 	{
 		indcArray[(*indcArrayPosition)++] = (initialArrayPosition / 3) + mIndices[i];
 	}
+}
+
+Bitmap * Model::GetTexture()
+{
+	return mTexture;
 }

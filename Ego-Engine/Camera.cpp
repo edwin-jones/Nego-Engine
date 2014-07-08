@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Camera.h"
+#include "Input.h";
 
 //translations
 Vector3F Position;
@@ -30,6 +31,7 @@ void Camera::SetRotation(Vector3F rotation)
 void Camera::Apply()
 {
 	glLoadIdentity(); //reset GFX card default matrix.
+
 	glTranslatef(Position.X, Position.Y, Position.Z); //adjust (times) the default gfx matrix by these values.
 
 	//only rotate by 2 axis at a time with this system due to gimble lock

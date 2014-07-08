@@ -1,11 +1,15 @@
-// Homework.cpp : Defines the entry point for the console application.
+// Homework.cpp : Defines the entry point for the console application.temp.bmp
 #include "stdafx.h"
 #include "Model.h"
 #include "Level.h"
+#include "Input.h"
+#include "Block.h"
 
 
-float rotation = 1.0f;
-float rotationUpdate = 0.1;
+Vector3F rotation = Vector3F(0);
+Vector3F position = Vector3F(0);
+
+const float Speed = 1.5f;
 
 const int targetFPS = 60;
 const int targetUPS = 120;
@@ -33,35 +37,41 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	MainRenderer->Init(hInstance, 512, 512);
 
-
-		for (int y = 0; y < levelOne->GetHeight(); y++)
+	//load floor blocks.
+	for (int y = 0; y < floor->GetHeight(); y++)
+	{
+		for (int x = 0; x < floor->GetWidth(); x++)
 		{
-			for (int x = 0; x < levelOne->GetWidth(); x++)
+			if (floor->GetBlock(x, y) == 0)
 			{
-				if (levelOne->GetBlock(x, y) == 0)
-				{
-					MainRenderer->AddToScene(new Model(Vector3F(x * 30, y * 30, 0)));
-				}
+				MainRenderer->AddToScene(new Block(Vector3F(x * 30, y * 30, 30), Block::BlockType::Floor));
 			}
 		}
+	}
 
-		for (int y = 0; y < floor->GetHeight(); y++)
+	//load floor wall blocks for level 1.
+	for (int y = 0; y < levelOne->GetHeight(); y++)
+	{
+		for (int x = 0; x < levelOne->GetWidth(); x++)
 		{
-			for (int x = 0; x < floor->GetWidth(); x++)
+			if (levelOne->GetBlock(x, y) == 0)
 			{
-				if (floor->GetBlock(x, y) == 0)
-				{
-					MainRenderer->AddToScene(new Model(Vector3F(x * 30, y * 30, 30)));
-				}
+				MainRenderer->AddToScene(new Block(Vector3F(x * 30, y * 30, 0), Block::BlockType::Wall));
 			}
 		}
+	}
+
+	
 	
 	
 
 
 	MainRenderer->SetBackBufferColor(Vector4F(0.0f, 0.5f, 1.0f, 1.0f));
 
-	MainRenderer->GetCamera()->SetPosition(Vector3F(-20.0f, -20.0f, -1000.0f));
+	//MainRenderer->GetCamera()->SetPosition(Vector3F(-20.0f, -20.0f, -1000.0f));
+	position = Vector3F(-20.0f, -20.0f, -1000.0f);
+	MainRenderer->GetCamera()->SetPosition(position);
+	rotation.X = 100.0f;
 
 	//get clockspeed
 	LARGE_INTEGER li;
@@ -83,8 +93,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			UpdateTimerClockFreq();
 		}
 
-		//check if we should draw
-		if (((GetTimerCurrentTime() - lastDraw) / coreFrequency) > (1000 / targetFPS))
+		//check if we should draw, lock at 59fps. this will reduce stutter to a degree but 60 fps would be best.
+		if (((GetTimerCurrentTime() - lastDraw) / coreFrequency) > (900 / targetFPS))
 		{
 			MainRenderer->Draw();
 			lastDraw = GetTimerCurrentTime();
@@ -127,7 +137,25 @@ void Update()
 		rotationUpdate = 1;
 	}*/
 
-	rotation += rotationUpdate;
+	//calculate input
+	if (Input::IsKeyDown(VK_UP))
+	{
+		position.Z += Speed;
+	}
+	else if (Input::IsKeyDown(VK_DOWN))
+	{
+		position.Z -= Speed;
+	}
+	else if (Input::IsKeyDown(VK_LEFT))
+	{
+		rotation.Z += Speed;
+	}
+	else if (Input::IsKeyDown(VK_RIGHT))
+	{
+		rotation.Z -= Speed;
+	}
 
-	MainRenderer->GetCamera()->SetRotation(Vector3F(rotation * 4, rotation * 6, 0));
+
+	MainRenderer->GetCamera()->SetRotation(rotation);
+	MainRenderer->GetCamera()->SetPosition(position);
 }

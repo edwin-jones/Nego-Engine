@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Level.h" />
@@ -105,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -118,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\SupportFiles\cubes.ico" />
+    <Image Include="Floor.bmp" />
     <Image Include="Temp.bmp" />
   </ItemGroup>
   <ItemGroup>

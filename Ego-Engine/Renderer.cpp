@@ -16,7 +16,7 @@ HDC hDC;
 HGLRC hRC;
 MSG msg;
 HICON hicon;
-GLuint currentTexture;
+
 
 Camera * CurrentCamera;
 Vector4F BackBufferColor;
@@ -40,6 +40,16 @@ Renderer::~Renderer()
 void Renderer::AddToScene(Model* modelToAdd)
 {
 	ModelsToDraw.push_back(modelToAdd);
+
+	glGenTextures(1, &modelToAdd->currentTextureIdentifier);
+	glBindTexture(GL_TEXTURE_2D, modelToAdd->currentTextureIdentifier);
+
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, modelToAdd->GetTexture()->GetWidth(), modelToAdd->GetTexture()->GetHeight(),
+		0, GL_RGB, GL_UNSIGNED_BYTE, modelToAdd->GetTexture()->GetData());
 }
 
 Camera * Renderer::GetCamera()
@@ -129,10 +139,10 @@ void Renderer::Init(HINSTANCE hInstance, int width, int height)
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wc.lpszMenuName = NULL;
-	wc.lpszClassName = L"GLSample";
+	wc.lpszClassName = L"Ego Engine";
 	RegisterClass(&wc);
 
-	hWnd = CreateWindow(L"GLSample", L"Edwin's OpenGL Sample Program", WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE, 0, 0, CurrentScreenSize.X, CurrentScreenSize.Y, NULL, NULL, hInstance, NULL);
+	hWnd = CreateWindow(L"Ego Engine", L"Ego Engine", WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE, 0, 0, CurrentScreenSize.X, CurrentScreenSize.Y, NULL, NULL, hInstance, NULL);
 	hDC = GetDC(hWnd);
 
 	ConstructGLContext();
@@ -147,9 +157,9 @@ void Renderer::Init(HINSTANCE hInstance, int width, int height)
 
 	//load texture
 
-	Bitmap * bmp = new Bitmap("Temp.bmp");
+	Bitmap * bmp = new Bitmap("Floor.bmp");
 
-	glGenTextures(1, &currentTexture);
+	/*glGenTextures(1, &currentTexture);
 	glBindTexture(GL_TEXTURE_2D, currentTexture);
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -157,9 +167,9 @@ void Renderer::Init(HINSTANCE hInstance, int width, int height)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, bmp->GetWidth(), bmp->GetHeight(),
-		0, GL_RGB, GL_UNSIGNED_BYTE, bmp->GetData());
+		0, GL_RGB, GL_UNSIGNED_BYTE, bmp->GetData());*/
 
-	//
+	
 
 }
 
@@ -174,19 +184,23 @@ void Renderer::Dispose()
 {
 	if (!Disposed)
 	{
+		//delete all heap arrays used for graphics.
 		delete[] VertexList;
 		delete[] Indices;
 		delete[] Colors;
+		delete[] TexturePositions;
 
+		//delete all models in memory.
 		for (int i = 0; i < ModelsToDraw.size(); i++)
 		{
 			delete ModelsToDraw[i];
 		}
 
-
+		//delete the current camera.
 		delete CurrentCamera;
 	}
 
+	//mark the renderer as disposed.
 	Disposed = true;
 }
 
@@ -214,7 +228,7 @@ void Renderer::ConstructGLContext()
 void Renderer::Render()
 {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, currentTexture);
+	//glBindTexture(GL_TEXTURE_2D, currentTexture);
 
 	int vertexArraystep = 0;
 	int indexArraystep = 0;
