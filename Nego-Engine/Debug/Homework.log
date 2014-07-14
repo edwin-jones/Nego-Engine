@@ -1,0 +1,47 @@
+﻿Build started 15/07/2014 00:25:40.
+     1>Project "C:\Users\Edwin\Documents\Projects\Ego-Engine\Nego-Engine\Homework.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Ego-Engine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /Qpar /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\Nego-Engine.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /Qpar /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Nego-Engine.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bitmap.cpp Block.cpp Camera.cpp Input.cpp Main.cpp Level.cpp Model.cpp Renderer.cpp
+         Bitmap.cpp
+         Block.cpp
+         Camera.cpp
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\camera.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\input.h(24): warning C4091: 'static ' : ignored on left of 'Input' when no variable is declared
+         Input.cpp
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\input.h(24): warning C4091: 'static ' : ignored on left of 'Input' when no variable is declared
+         Main.cpp
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\input.h(24): warning C4091: 'static ' : ignored on left of 'Input' when no variable is declared
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\main.cpp(47): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\main.cpp(59): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\main.cpp(80): warning C4101: 'li' : unreferenced local variable
+         Level.cpp
+         Model.cpp
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\model.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         Renderer.cpp
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\input.h(24): warning C4091: 'static ' : ignored on left of 'Input' when no variable is declared
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\renderer.cpp(194): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\edwin\documents\projects\ego-engine\nego-engine\renderer.cpp(238): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Edwin\Documents\Projects\Ego-Engine\Debug\Nego-Engine.exe" /INCREMENTAL /NOLOGO /LIBPATH:../SupportFiles opengl32.lib glu32.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Edwin\Documents\Projects\Ego-Engine\Debug\Nego-Engine.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Edwin\Documents\Projects\Ego-Engine\Debug\Nego-Engine.lib" /MACHINE:X86 Debug\Bitmap.obj
+         Debug\Block.obj
+         Debug\Camera.obj
+         Debug\Input.obj
+         Debug\Main.obj
+         Debug\Level.obj
+         Debug\Model.obj
+         Debug\Renderer.obj
+         Debug\stdafx.obj
+         Homework.vcxproj -> C:\Users\Edwin\Documents\Projects\Ego-Engine\Debug\Nego-Engine.exe
+       PostBuildEvent:
+         copy ..\SupportFiles\glew32.dll ..\Debug\glew32.dll
+         :VCEnd
+                 1 file(s) copied.
+     1>Done Building Project "C:\Users\Edwin\Documents\Projects\Ego-Engine\Nego-Engine\Homework.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.77

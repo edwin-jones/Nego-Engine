@@ -18,6 +18,7 @@ private:
 	void ConstructGLContext();
 	void Render();
 	void PreRenderSetup();
-	int CheckMessages();	
+	int CheckMessages();
+	const LPWSTR WindowName = L"Nego Engine";
 };
 
