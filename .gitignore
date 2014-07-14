@@ -28,5 +28,12 @@
 *.sdf
 *.opensdf
 *.suo
-/Ego-Engine/Debug
-/Ego-Engine/Release
+/Nego-Engine/Debug
+/Nego-Engine/Release
+Nego-Engine.pch
+/Nego-Engine/Debug/*.log
+/Nego-Engine/Debug/*.idb
+/Nego-Engine/Debug/Ego-Engine.tlog
+/Nego-Engine/Debug/*.pdb
+/Nego-Engine/Debug/*.log
+Debug
